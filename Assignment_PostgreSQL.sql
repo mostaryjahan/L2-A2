@@ -60,9 +60,28 @@ SELECT * FROM sightings;
 -- problem 01
 INSERT INTO rangers (name, region) VALUES ('Derek Fox', 'Coastal Plains');
 
--- problem 02 Count unique species ever sighted.
+-- problem 02
 SELECT COUNT(*) AS unique_species_count FROM (
     SELECT species_id
     FROM sightings
     GROUP BY species_id
 ) AS unique_species;
+
+SELECT COUNT(DISTINCT species_id) AS unique_species_count
+FROM sightings;
+
+-- problem-03
+SELECT sighting_id, species_id, ranger_id, location, sighting_time, notes
+FROM sightings
+WHERE location LIKE '%Pass%';
+
+-- problem-04
+SELECT
+
+
+
+
+-- problem 07
+UPDATE species
+SET conservation_status = 'Historic'
+WHERE discovery_date < '1800-01-01';
