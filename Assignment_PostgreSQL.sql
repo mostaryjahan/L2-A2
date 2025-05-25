@@ -90,7 +90,7 @@ SELECT
 FROM sightings
 ORDER BY sighting_id;
 
--- Problem 9
+-- Problem 9:
 DELETE FROM rangers
 WHERE ranger_id NOT IN (
     SELECT DISTINCT ranger_id
