@@ -40,33 +40,33 @@ INSERT INTO sightings (species_id, ranger_id, location, sighting_time, notes) VA
 (3, 3, 'Bamboo Grove East', '2024-05-15 09:10:00', 'Feeding observed'),
 (1, 2, 'Snowfall Pass', '2024-05-18 18:30:00', NULL);
 
--- question 1
+-- Problem 1
 INSERT INTO rangers (name, region) 
 VALUES ('Derek Fox', 'Coastal Plains');
 
--- question 2
+-- Problem 2
 SELECT COUNT(DISTINCT species_id) AS unique_species_count
 FROM sightings;
 
--- question 3
+-- Problem 3
 SELECT sighting_id, species_id, ranger_id, location, sighting_time, notes
 FROM sightings
 WHERE location LIKE '%Pass%';
 
--- question 4
+-- Problem 4
 SELECT r.name, COUNT(s.sighting_id) AS total_sightings
 FROM rangers r
 LEFT JOIN sightings s ON r.ranger_id = s.ranger_id
 GROUP BY r.ranger_id, r.name
 ORDER BY r.ranger_id;
 
--- question 5
+-- Problem 5
 SELECT common_name FROM species
 WHERE species_id NOT IN (
     SELECT species_id FROM sightings GROUP BY species_id
 );
 
--- question 6
+-- Problem 6
 SELECT sp.common_name, si.sighting_time, r.name
 FROM sightings si
 JOIN species sp ON si.species_id = sp.species_id
@@ -74,12 +74,12 @@ JOIN rangers r ON si.ranger_id = r.ranger_id
 ORDER BY si.sighting_time DESC
 LIMIT 2;
 
--- question 7
+-- Problem 7
 UPDATE species
 SET conservation_status = 'Historic'
 WHERE discovery_date < '1800-01-01';
 
--- question 8
+-- Problem 8
 SELECT 
     sighting_id,
     CASE 
@@ -90,7 +90,7 @@ SELECT
 FROM sightings
 ORDER BY sighting_id;
 
--- question 9
+-- Problem 9
 DELETE FROM rangers
 WHERE ranger_id NOT IN (
     SELECT DISTINCT ranger_id
